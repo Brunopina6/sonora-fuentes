@@ -1,0 +1,30 @@
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    restart: unless-stopped
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: Europe/Paris
+    ports:
+      - "127.0.0.1:9696:9696"
+    volumes:
+      - prowlarr_config:/config
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      INDEXER_HOST: ${INDEXER_HOST:?Define el dominio del indexador}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  prowlarr_config:
+  caddy_data:
+  caddy_config:
