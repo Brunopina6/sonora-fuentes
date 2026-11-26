@@ -1,0 +1,12 @@
+{$INDEXER_HOST} {
+    @sonora {
+        method GET
+        path /api/v1/search /api/v1/system/status
+    }
+    handle @sonora {
+        reverse_proxy prowlarr:9696
+    }
+    handle {
+        respond 404
+    }
+}
