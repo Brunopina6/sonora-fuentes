@@ -16,7 +16,7 @@ Las fuentes responden directamente al móvil. El formato actual es `version: 1`.
 
 1. En el servidor, entra en `deploy`, define `INDEXER_HOST` en el entorno o en un archivo `.env` local y ejecuta `docker compose up -d prowlarr`.
 2. Abre un túnel SSH con `ssh -L 9696:127.0.0.1:9696 usuario@servidor`. En tu navegador, abre `http://127.0.0.1:9696` y configura la autenticación **Forms**, con **Authentication Required** activado para todas las direcciones. Añade tus indexadores de audio y prueba una búsqueda.
-3. Ejecuta `docker compose up -d`. Caddy publica por HTTPS solo los dos endpoints GET que usa Sonora. La interfaz de administración queda en el acceso local o en el túnel SSH.
-4. En Sonora, abre **Ajustes → Fuentes → Indexador de audio** e introduce la URL HTTPS y la clave de API de Prowlarr. Desde **Buscar → Addons**, toca un resultado con magnet y elige Real-Debrid o TorBox.
+3. Ejecuta `docker compose up -d`. Caddy publica por HTTPS solo los endpoints GET de búsqueda, estado y descarga que usa Sonora. La interfaz de administración queda en el acceso local o en el túnel SSH.
+4. En Sonora, abre **Ajustes → Fuentes → Indexador de audio** e introduce la URL HTTPS y la clave de API de Prowlarr. Desde **Buscar → Addons**, toca un resultado y elige Real-Debrid o TorBox.
 
 El repositorio es público. Las claves de Prowlarr y Debrid se introducen en Sonora y se guardan cifradas en Android. Los archivos de Docker son una plantilla. Para consultar Prowlarr hace falta un despliegue activo y un indexador de audio configurado.
