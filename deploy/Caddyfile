@@ -6,6 +6,13 @@
     handle @sonora {
         reverse_proxy prowlarr:9696
     }
+    @torrent {
+        method GET
+        path_regexp torrent ^/[0-9]+/download$
+    }
+    handle @torrent {
+        reverse_proxy prowlarr:9696
+    }
     handle {
         respond 404
     }
